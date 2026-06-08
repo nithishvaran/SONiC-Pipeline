@@ -27,7 +27,7 @@ pipeline {
             steps {
                 sh '''
                     python3 -m venv venv
-                    pip3 install -q -r requirements.txt
+                    venv/bin/pip install -q -r requirements.txt
                 '''
             }
         }
