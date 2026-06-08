@@ -26,7 +26,7 @@ pipeline {
         stage('Setup') {
             steps {
                 sh '''
-                    python3 -m pip install --upgrade pip
+                    python3 -m venv venv
                     pip3 install -q -r requirements.txt
                 '''
             }
@@ -74,7 +74,7 @@ pipeline {
 
             sh '''
                 if [ -f analyze.py ]; then
-                    python3 analyze.py "$BUILD_LOG" || true
+                    venv/bin/python analyze.py "$BUILD_LOG" || true
                 else
                     echo "analyze.py not found."
                 fi
